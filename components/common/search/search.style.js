@@ -6,21 +6,6 @@ const styles = StyleSheet.create({
     container: {
         width: "100%"
     },
-    branding: {
-        fontFamily: FONT.regular,
-        fontSize: SIZES.medium,
-        color: COLORS.lightwhite,
-    },
-    welcomeMessage: {
-        fontFamily: FONT.gembuck,
-        fontSize: 42,
-        color: COLORS.secondary,
-        marginTop: 24,
-        marginBottom: 32
-    },
-    messagePlain: {
-        color: COLORS.white
-    },
     searchMessage: {
         fontFamily: FONT.bold,
         fontSize: SIZES.medium,

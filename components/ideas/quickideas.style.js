@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
     cardContainer: {
         marginTop: SIZES.medium,
         gap: SIZES.large
+    },
+    noresults: {
+        fontFamily: FONT.regular,
+        fontSize: SIZES.medium,
+        color: COLORS.lightwhite
     }
 })
 
