@@ -5,9 +5,12 @@ import styles from './search.style';
 const Search = ({
                     searchHeader,
                     placeholderText,
-                    setSearch,
-                    searchString,
                     handleSearch }) => {
+    const [search, setSearch] = useState("");
+    const executeSearch = () => {
+        handleSearch(search);
+        setSearch("");
+    }
     return (
         <>
             <View>
@@ -19,14 +22,14 @@ const Search = ({
                 <View style={styles.searchWrapper}>
                     <TextInput
                         style={styles.searchInput}
-                        value={searchString}
-                        onChange={(e) => setSearch(e.target.value)}
+                        value={search}
+                        onChangeText={(text) => setSearch(text)}
                         placeholderTextColor={COLORS.lightwhite}
                         placeholder={placeholderText}
                     />
                 </View>
                 <TouchableOpacity
-                    onPress={() => handleSearch()}
+                    onPress={() => executeSearch()}
                     style={styles.searchBtn}>
                     <Image
                         source={icons.search}

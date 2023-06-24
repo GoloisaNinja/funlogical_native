@@ -12,7 +12,6 @@ const QuickIdeas = () => {
     const { data, isLoading, error } = useFetch("ideas");
     const [newDataIsLoading, setNewDataIsLoading] = useState(false);
     const [newFetchError, setNewFetchError] = useState(null);
-    const [search, setSearch] = useState("");
     const [dataToDisplay, setDataToDisplay] = useState([]);
     const base = 'https://sbbadideasapi-production.up.railway.app/api/v1/'
     const handleShowAll = async () => {
@@ -26,14 +25,16 @@ const QuickIdeas = () => {
             setNewDataIsLoading(false);
         }
     }
-    const handleSearch = async () => {
-        const encodedSearch = encodeURI(search);
-        const endpoint = base + "ideas/search?query=" + encodedSearch;
+    const handleSearch = async (text) => {
+        const options = {
+            method: 'GET',
+            url: base + "ideas/search",
+            params: { query: text }
+        }
         setNewDataIsLoading(true);
         try {
-            const response = await axios.get(endpoint);
+            const response = await axios.request(options);
             setDataToDisplay(response.data);
-            setSearch("");
         } catch(err) {
             setNewFetchError(err);
         } finally {
@@ -48,8 +49,6 @@ const QuickIdeas = () => {
             <Search
                 searchHeader={"Find a divisive topic"}
                 placeholderText={"try 'jesus' or 'murica'"}
-                searchString={search}
-                setSearch={setSearch}
                 handleSearch={handleSearch}
             />
         <View style={styles.container}>
